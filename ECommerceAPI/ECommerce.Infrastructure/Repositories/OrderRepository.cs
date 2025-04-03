@@ -3,7 +3,7 @@ using ECommerce.Domain.Entities;
 using ECommerceAPI.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace ECommerce.Infrastructure.Repositories;
+namespace ECommerceAPI.Repositories;
 
 public class OrderRepository : IOrderRepository
 {
