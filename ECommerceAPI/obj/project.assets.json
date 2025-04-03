@@ -1,11 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {
+    "net8.0": {
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/Humanizer.dll": {
             "related": ".xml"
           }
         },
@@ -15,29 +15,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.OpenApi/9.0.3": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.OpenApi": "1.6.17"
-        },
-        "compile": {
-          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "related": ".xml"
-          }
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.1/_._": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
         },
@@ -63,7 +44,7 @@
           "System.Text.Encoding.CodePages": "6.0.0"
         },
         "compile": {
-          "lib/netcoreapp3.1/_._": {
+          "lib/netcoreapp3.1/Microsoft.CodeAnalysis.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -120,7 +101,7 @@
           "Microsoft.CodeAnalysis.Common": "[4.5.0]"
         },
         "compile": {
-          "lib/netcoreapp3.1/_._": {
+          "lib/netcoreapp3.1/Microsoft.CodeAnalysis.CSharp.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -180,7 +161,7 @@
           "Microsoft.CodeAnalysis.Workspaces.Common": "[4.5.0]"
         },
         "compile": {
-          "lib/netcoreapp3.1/_._": {
+          "lib/netcoreapp3.1/Microsoft.CodeAnalysis.CSharp.Workspaces.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -242,7 +223,7 @@
           "System.Threading.Channels": "6.0.0"
         },
         "compile": {
-          "lib/netcoreapp3.1/_._": {
+          "lib/netcoreapp3.1/Microsoft.CodeAnalysis.Workspaces.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -293,11 +274,11 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore/8.0.12": {
+      "Microsoft.EntityFrameworkCore/8.0.13": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "8.0.12",
-          "Microsoft.EntityFrameworkCore.Analyzers": "8.0.12",
+          "Microsoft.EntityFrameworkCore.Abstractions": "8.0.13",
+          "Microsoft.EntityFrameworkCore.Analyzers": "8.0.13",
           "Microsoft.Extensions.Caching.Memory": "8.0.1",
           "Microsoft.Extensions.Logging": "8.0.1"
         },
@@ -315,7 +296,7 @@
           "buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/8.0.12": {
+      "Microsoft.EntityFrameworkCore.Abstractions/8.0.13": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
@@ -328,7 +309,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/8.0.12": {
+      "Microsoft.EntityFrameworkCore.Analyzers/8.0.13": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -337,17 +318,17 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Design/8.0.12": {
+      "Microsoft.EntityFrameworkCore.Design/8.0.13": {
         "type": "package",
         "dependencies": {
           "Humanizer.Core": "2.14.1",
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.5.0",
-          "Microsoft.EntityFrameworkCore.Relational": "8.0.12",
+          "Microsoft.EntityFrameworkCore.Relational": "8.0.13",
           "Microsoft.Extensions.DependencyModel": "8.0.2",
           "Mono.TextTemplating": "2.2.1"
         },
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Design.dll": {
             "related": ".xml"
           }
         },
@@ -377,10 +358,10 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/8.0.12": {
+      "Microsoft.EntityFrameworkCore.Tools/8.0.13": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "8.0.12"
+          "Microsoft.EntityFrameworkCore.Design": "8.0.13"
         },
         "compile": {
           "lib/net8.0/_._": {}
@@ -499,7 +480,7 @@
       "Microsoft.Extensions.DependencyModel/8.0.2": {
         "type": "package",
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/Microsoft.Extensions.DependencyModel.dll": {
             "related": ".xml"
           }
         },
@@ -588,7 +569,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.OpenApi/1.6.17": {
+      "Microsoft.OpenApi/1.2.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
@@ -607,7 +588,7 @@
           "System.CodeDom": "4.4.0"
         },
         "compile": {
-          "lib/netstandard2.0/_._": {}
+          "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
@@ -712,7 +693,7 @@
       "System.CodeDom/4.4.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.0/_._": {
+          "ref/netstandard2.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
@@ -726,7 +707,7 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Collections.Immutable.dll": {
             "related": ".xml"
           }
         },
@@ -755,7 +736,7 @@
       "System.Composition.AttributedModel/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Composition.AttributedModel.dll": {
             "related": ".xml"
           }
         },
@@ -774,7 +755,7 @@
           "System.Composition.AttributedModel": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Composition.Convention.dll": {
             "related": ".xml"
           }
         },
@@ -793,7 +774,7 @@
           "System.Composition.Runtime": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Composition.Hosting.dll": {
             "related": ".xml"
           }
         },
@@ -809,7 +790,7 @@
       "System.Composition.Runtime/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Composition.Runtime.dll": {
             "related": ".xml"
           }
         },
@@ -830,7 +811,7 @@
           "System.Composition.Runtime": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Composition.TypedParts.dll": {
             "related": ".xml"
           }
         },
@@ -846,7 +827,7 @@
       "System.IO.Pipelines/6.0.3": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.IO.Pipelines.dll": {
             "related": ".xml"
           }
         },
@@ -865,7 +846,7 @@
           "System.Collections.Immutable": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Reflection.Metadata.dll": {
             "related": ".xml"
           }
         },
@@ -881,7 +862,7 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
             "related": ".xml"
           }
         },
@@ -900,7 +881,7 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Text.Encoding.CodePages.dll": {
             "related": ".xml"
           }
         },
@@ -922,7 +903,7 @@
       "System.Threading.Channels/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Threading.Channels.dll": {
             "related": ".xml"
           }
         },
@@ -954,22 +935,6 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
-      ]
-    },
-    "Microsoft.AspNetCore.OpenApi/9.0.3": {
-      "sha512": "fKh0UyGMUE+lhbovMhh3g88b9bT+y2jfZIuJ8ljY7rcCaSJ9m2Qqqbh66oULFfzWE2BUAmimzTGcPcq3jXi/Ew==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.openapi/9.0.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "PACKAGE.md",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll",
-        "lib/net9.0/Microsoft.AspNetCore.OpenApi.xml",
-        "microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
-        "microsoft.aspnetcore.openapi.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
@@ -1424,10 +1389,10 @@
         "microsoft.codeanalysis.workspaces.common.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore/8.0.12": {
-      "sha512": "oxZydJ7/1NdG2Tf6qHeTkcm2j2Nc+uHQy5mxrv2FmVFXt7MfkTMyCokcMeElrr7nAUAidrOdiZPVSpNMKkLbkQ==",
+    "Microsoft.EntityFrameworkCore/8.0.13": {
+      "sha512": "4wyLeg64sZgJcER83fkitlKuySY3OzwcOZSZcGV1TNskmThupfhcVlsQht7bNCfNpXTCZVNIOwAZChk6/OFdXQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore/8.0.12",
+      "path": "microsoft.entityframeworkcore/8.0.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1436,14 +1401,14 @@
         "buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props",
         "lib/net8.0/Microsoft.EntityFrameworkCore.dll",
         "lib/net8.0/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.8.0.12.nupkg.sha512",
+        "microsoft.entityframeworkcore.8.0.13.nupkg.sha512",
         "microsoft.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/8.0.12": {
-      "sha512": "A19COkZVUI3bNUdtWAgLvxzOXyW/gwJ1enmkHi0rgslPIAv9tFU0yEq4KNfmLoHf8kikYvC2DKYZo8vJvWzklA==",
+    "Microsoft.EntityFrameworkCore.Abstractions/8.0.13": {
+      "sha512": "a6O+v8CMStumpVoQyN0aUpx5P3/qYZP+5791sGrzJhIM+QsniQdSaJVdUSneL40M+FpBgtiC8ggqzNo2x/gVlw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.abstractions/8.0.12",
+      "path": "microsoft.entityframeworkcore.abstractions/8.0.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1451,14 +1416,14 @@
         "PACKAGE.md",
         "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
         "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
-        "microsoft.entityframeworkcore.abstractions.8.0.12.nupkg.sha512",
+        "microsoft.entityframeworkcore.abstractions.8.0.13.nupkg.sha512",
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/8.0.12": {
-      "sha512": "irXnlkKHepepje6+ICaKpe/G4QnWi1G9Em9CmfqAEKb7OUTYaDQ2ieGps2Tl7/rblj5CKB0tDNI421f64x/Tqw==",
+    "Microsoft.EntityFrameworkCore.Analyzers/8.0.13": {
+      "sha512": "ENny33QADFiRxge5ikJBs2p7JB4MQx/ZSPKPNwt2eJPO0lVUGSjTiJeunGGggkVHiaUy0yY4f625LQtNlErIsw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/8.0.12",
+      "path": "microsoft.entityframeworkcore.analyzers/8.0.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1466,14 +1431,14 @@
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
         "docs/PACKAGE.md",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.analyzers.8.0.12.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.8.0.13.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/8.0.12": {
-      "sha512": "Xo1GfRi2+Ev6NEAf2OBbNV8xsAmvCdeluyRi4Npq3/N9H5GOFlTaor+XZArAz+qC/o7TL5E1ZRSV9wEY0F2x3g==",
+    "Microsoft.EntityFrameworkCore.Design/8.0.13": {
+      "sha512": "lQ+ck65jBgUc4VdQFzmeE7rofw3VCW4vkLZKp3ntz1GONw8Upsvhg+bpRiMjz4HvArxoGaUZz2XQ6vg5Im0uUQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.design/8.0.12",
+      "path": "microsoft.entityframeworkcore.design/8.0.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1482,7 +1447,7 @@
         "build/net8.0/Microsoft.EntityFrameworkCore.Design.props",
         "lib/net8.0/Microsoft.EntityFrameworkCore.Design.dll",
         "lib/net8.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.8.0.12.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.8.0.13.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
@@ -1501,10 +1466,10 @@
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/8.0.12": {
-      "sha512": "ePBSLgIkvvyU9HarTKFkvtOnqNfz3Ok107SxC3ZFnpwt7AJP7lWTWtJH+PTsIdCxeRyTOOVW88TlvY+7QrG02Q==",
+    "Microsoft.EntityFrameworkCore.Tools/8.0.13": {
+      "sha512": "mbCcyX6ImsCcK2OU2qEQKLWaHn91Z7P/KlQSKCZt+rxRMM+d94jV3SR3KKSchA4TzAehZaDKeQlLxuToEX15gQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/8.0.12",
+      "path": "microsoft.entityframeworkcore.tools/8.0.13",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -1512,7 +1477,7 @@
         "Icon.png",
         "docs/PACKAGE.md",
         "lib/net8.0/_._",
-        "microsoft.entityframeworkcore.tools.8.0.12.nupkg.sha512",
+        "microsoft.entityframeworkcore.tools.8.0.13.nupkg.sha512",
         "microsoft.entityframeworkcore.tools.nuspec",
         "tools/EntityFrameworkCore.PS2.psd1",
         "tools/EntityFrameworkCore.PS2.psm1",
@@ -2124,18 +2089,20 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.OpenApi/1.6.17": {
-      "sha512": "Le+kehlmrlQfuDFUt1zZ2dVwrhFQtKREdKBo+rexOwaCoYP0/qpgT9tLxCsZjsgR5Itk1UKPcbgO+FyaNid/bA==",
+    "Microsoft.OpenApi/1.2.3": {
+      "sha512": "Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
       "type": "package",
-      "path": "microsoft.openapi/1.6.17",
+      "path": "microsoft.openapi/1.2.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "README.md",
+        "lib/net46/Microsoft.OpenApi.dll",
+        "lib/net46/Microsoft.OpenApi.pdb",
+        "lib/net46/Microsoft.OpenApi.xml",
         "lib/netstandard2.0/Microsoft.OpenApi.dll",
         "lib/netstandard2.0/Microsoft.OpenApi.pdb",
         "lib/netstandard2.0/Microsoft.OpenApi.xml",
-        "microsoft.openapi.1.6.17.nupkg.sha512",
+        "microsoft.openapi.1.2.3.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
     },
@@ -2603,46 +2570,45 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net9.0": [
-      "Microsoft.AspNetCore.OpenApi >= 9.0.3",
-      "Microsoft.EntityFrameworkCore >= 8.0.12",
-      "Microsoft.EntityFrameworkCore.Design >= 8.0.12",
-      "Microsoft.EntityFrameworkCore.Tools >= 8.0.12",
+    "net8.0": [
+      "Microsoft.EntityFrameworkCore >= 8.0.13",
+      "Microsoft.EntityFrameworkCore.Design >= 8.0.13",
+      "Microsoft.EntityFrameworkCore.Tools >= 8.0.13",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.3",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\blaze\\.nuget\\packages\\": {},
+    "C:\\Users\\barte\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\blaze\\OneDrive\\Pulpit\\E-CommerceAPI\\E-CommerceAPI\\ECommerceAPI\\ECommerceAPI.csproj",
+      "projectUniqueName": "C:\\Users\\barte\\Desktop\\Nowy folder (2)\\E-CommerceAPI\\ECommerceAPI\\ECommerceAPI.csproj",
       "projectName": "ECommerceAPI",
-      "projectPath": "C:\\Users\\blaze\\OneDrive\\Pulpit\\E-CommerceAPI\\E-CommerceAPI\\ECommerceAPI\\ECommerceAPI.csproj",
-      "packagesPath": "C:\\Users\\blaze\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\blaze\\OneDrive\\Pulpit\\E-CommerceAPI\\E-CommerceAPI\\ECommerceAPI\\obj\\",
+      "projectPath": "C:\\Users\\barte\\Desktop\\Nowy folder (2)\\E-CommerceAPI\\ECommerceAPI\\ECommerceAPI.csproj",
+      "packagesPath": "C:\\Users\\barte\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\barte\\Desktop\\Nowy folder (2)\\E-CommerceAPI\\ECommerceAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\blaze\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\barte\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net9.0"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -2659,28 +2625,20 @@
       "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
-      "net9.0": {
-        "targetAlias": "net9.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
-          "Microsoft.AspNetCore.OpenApi": {
-            "target": "Package",
-            "version": "[9.0.3, )"
-          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[8.0.12, )"
+            "version": "[8.0.13, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.12, )"
+            "version": "[8.0.13, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.12, )"
+            "version": "[8.0.13, )"
           },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
@@ -2713,16 +2671,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Warning As Error: Detected package downgrade: Microsoft.EntityFrameworkCore from 8.0.13 to 8.0.12. Reference the package directly from the project to select a different version. \r\n ECommerceAPI -> Microsoft.EntityFrameworkCore.Design 8.0.12 -> Microsoft.EntityFrameworkCore.Relational 8.0.13 -> Microsoft.EntityFrameworkCore (>= 8.0.13) \r\n ECommerceAPI -> Microsoft.EntityFrameworkCore (>= 8.0.12)",
-      "libraryId": "Microsoft.EntityFrameworkCore",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  }
 }
