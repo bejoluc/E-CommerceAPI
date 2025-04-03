@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "syDStv413Ew=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\blaze\\OneDrive\\Pulpit\\E-CommerceAPI\\E-CommerceAPI\\ECommerceAPI\\ECommerceAPI\\ECommerceAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\blaze\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
+    "C:\\Users\\blaze\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
