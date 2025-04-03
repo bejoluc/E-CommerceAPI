@@ -1,11 +1,16 @@
-﻿namespace ECommerce.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace ECommerce.Domain.Entities;
+
+public class Product
 {
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public decimal Price { get; set; }
-        public int OrderId { get; set; } // FK
-        public Order? Order { get; set; }
-    }
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public decimal Price { get; set; }
+
+    public int? OrderId { get; set; }
+
+    [JsonIgnore]
+    public Order? Order { get; set; }
+
 }

@@ -67,3 +67,5 @@ Others
 *.db
 *.bak
 *.cache
+obj
+bin

@@ -1,18 +1,48 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ECommerce.Application.Interfaces;
 using ECommerce.Domain.Entities;
+using ECommerceAPI.DTOs;
 
 namespace ECommerceAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ProductsController : ControllerBase
+public class ProductController : ControllerBase
 {
     private readonly IProductRepository _repo;
 
-    public ProductsController(IProductRepository repo)
+    public ProductController(IProductRepository repo)
     {
         _repo = repo;
+    }
+
+    // 1️⃣ Dodanie produktu do bazy (bez przypisania do zamówienia)
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] ProductCreateDto dto)
+    {
+        var product = new Product
+        {
+            Name = dto.Name,
+            Price = dto.Price
+        };
+
+        await _repo.AddAsync(product);
+        return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
+    }
+
+    // 2️⃣ Dodanie produktu do zamówienia (czyli do "koszyka")
+    [HttpPost("add-to-order")]
+    public async Task<IActionResult> AddToOrder([FromBody] ProductToOrderDto dto)
+    {
+        var product = new Product
+        {
+            Name = dto.Name,
+            Price = dto.Price,
+            OrderId = dto.OrderId
+        };
+
+        await _repo.AddAsync(product);
+        return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
     }
 
     [HttpGet]
@@ -24,13 +54,6 @@ public class ProductsController : ControllerBase
     {
         var product = await _repo.GetByIdAsync(id);
         return product is null ? NotFound() : Ok(product);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Create(Product product)
-    {
-        await _repo.AddAsync(product);
-        return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
     }
 
     [HttpPut("{id}")]
