@@ -1,7 +1,7 @@
 ﻿namespace ECommerceAPI.DTOs;
 
-public class AssignProductToOrderDto
+public class UpdateOrderProductDto
 {
     public int ProductId { get; set; }
-    public int OrderId { get; set; }
+    public int Quantity { get; set; }
 }

@@ -113,16 +113,103 @@ public class OrdersController : ControllerBase
         product.Stock -= dto.Quantity;
         await _productRepo.UpdateAsync(product);
 
-        var orderProduct = new OrderProduct
+        var existing = await _context.OrderProducts
+            .FirstOrDefaultAsync(op => op.OrderId == dto.OrderId && op.ProductId == dto.ProductId);
+
+        if (existing != null)
         {
-            OrderId = dto.OrderId,
-            ProductId = dto.ProductId,
-            Quantity = dto.Quantity
-        };
+            existing.Quantity += dto.Quantity;
+            _context.OrderProducts.Update(existing);
+        }
+        else
+        {
+            var orderProduct = new OrderProduct
+            {
+                OrderId = dto.OrderId,
+                ProductId = dto.ProductId,
+                Quantity = dto.Quantity
+            };
+            _context.OrderProducts.Add(orderProduct);
+        }
 
-        _context.OrderProducts.Add(orderProduct);
         await _context.SaveChangesAsync();
+        return Ok($"Product {dto.ProductId} added/updated in order {dto.OrderId} (qty: +{dto.Quantity})");
+    }
 
-        return Ok($"Product {dto.ProductId} added to order {dto.OrderId} (qty: {dto.Quantity})");
+    [HttpPut("{orderId}")]
+    public async Task<IActionResult> UpdateOrder(int orderId, [FromBody] List<UpdateOrderProductDto> updatedProducts)
+    {
+        var order = await _context.Orders
+            .Include(o => o.OrderProducts)
+            .ThenInclude(op => op.Product)
+            .FirstOrDefaultAsync(o => o.Id == orderId);
+
+        if (order == null) return NotFound();
+
+        foreach (var op in order.OrderProducts)
+        {
+            var updated = updatedProducts.FirstOrDefault(p => p.ProductId == op.ProductId);
+
+            if (updated == null)
+            {
+                // Produkt usunięty z koszyka – zwracamy stock
+                var product = await _productRepo.GetByIdAsync(op.ProductId);
+                if (product != null) product.Stock += op.Quantity;
+
+                _context.OrderProducts.Remove(op);
+            }
+            else
+            {
+                var diff = updated.Quantity - op.Quantity;
+
+                if (diff > 0)
+                {
+                    var product = await _productRepo.GetByIdAsync(op.ProductId);
+                    if (product == null || product.Stock < diff)
+                        return BadRequest($"Not enough stock for product {op.ProductId}.");
+
+                    product.Stock -= diff;
+                    await _productRepo.UpdateAsync(product);
+                }
+                else if (diff < 0)
+                {
+                    var product = await _productRepo.GetByIdAsync(op.ProductId);
+                    if (product != null)
+                    {
+                        product.Stock += Math.Abs(diff);
+                        await _productRepo.UpdateAsync(product);
+                    }
+                }
+
+                op.Quantity = updated.Quantity;
+                _context.OrderProducts.Update(op);
+            }
+        }
+
+        // Dodaj nowe produkty które nie były wcześniej
+        var existingIds = order.OrderProducts.Select(op => op.ProductId).ToList();
+        var newProducts = updatedProducts.Where(p => !existingIds.Contains(p.ProductId));
+
+        foreach (var p in newProducts)
+        {
+            var product = await _productRepo.GetByIdAsync(p.ProductId);
+            if (product == null || product.Stock < p.Quantity)
+                return BadRequest($"Not enough stock for new product {p.ProductId}.");
+
+            product.Stock -= p.Quantity;
+            await _productRepo.UpdateAsync(product);
+
+            var newOp = new OrderProduct
+            {
+                OrderId = orderId,
+                ProductId = p.ProductId,
+                Quantity = p.Quantity
+            };
+
+            _context.OrderProducts.Add(newOp);
+        }
+
+        await _context.SaveChangesAsync();
+        return Ok("Order updated.");
     }
 }
