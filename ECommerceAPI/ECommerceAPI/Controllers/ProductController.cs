@@ -1,4 +1,4 @@
-﻿// ✅ ProductController.cs
+﻿
 using ECommerce.Application.Interfaces;
 using ECommerce.Domain.Entities;
 using ECommerceAPI.DTOs;

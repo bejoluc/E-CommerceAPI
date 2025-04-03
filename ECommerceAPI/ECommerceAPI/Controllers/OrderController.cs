@@ -152,7 +152,6 @@ public class OrdersController : ControllerBase
 
             if (updated == null)
             {
-                // Produkt usunięty z koszyka – zwracamy stock
                 var product = await _productRepo.GetByIdAsync(op.ProductId);
                 if (product != null) product.Stock += op.Quantity;
 
@@ -185,8 +184,6 @@ public class OrdersController : ControllerBase
                 _context.OrderProducts.Update(op);
             }
         }
-
-        // Dodaj nowe produkty które nie były wcześniej
         var existingIds = order.OrderProducts.Select(op => op.ProductId).ToList();
         var newProducts = updatedProducts.Where(p => !existingIds.Contains(p.ProductId));
 
