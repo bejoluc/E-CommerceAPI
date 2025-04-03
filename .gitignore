@@ -69,3 +69,4 @@ Others
 *.cache
 obj
 bin
+/publish
