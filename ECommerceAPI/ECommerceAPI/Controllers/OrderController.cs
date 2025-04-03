@@ -22,11 +22,12 @@ public class OrdersController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
+        if (id <= 0) return BadRequest("Invalid ID.");
+
         var order = await _repo.GetByIdAsync(id);
         return order is null ? NotFound() : Ok(order);
     }
 
-    // ✅ Tworzy puste zamówienie (bez produktów)
     [HttpPost]
     public async Task<IActionResult> Create()
     {
@@ -38,6 +39,8 @@ public class OrdersController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
+        if (id <= 0) return BadRequest("Invalid ID.");
+
         var order = await _repo.GetByIdAsync(id);
         if (order is null) return NotFound();
 
