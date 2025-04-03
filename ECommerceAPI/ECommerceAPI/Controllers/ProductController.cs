@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ECommerce.Application.Interfaces;
+﻿using ECommerce.Application.Interfaces;
 using ECommerce.Domain.Entities;
 using ECommerceAPI.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceAPI.Controllers;
 
@@ -16,7 +16,7 @@ public class ProductController : ControllerBase
         _repo = repo;
     }
 
-    // 1️⃣ Dodanie produktu do bazy (bez przypisania do zamówienia)
+    // ✅ Dodanie produktu do katalogu (bez przypisania do zamówienia)
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] ProductCreateDto dto)
     {
@@ -30,7 +30,7 @@ public class ProductController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
     }
 
-    // 2️⃣ Dodanie produktu do zamówienia (czyli do "koszyka")
+    // ✅ Przypisanie produktu do zamówienia
     [HttpPost("add-to-order")]
     public async Task<IActionResult> AddToOrder([FromBody] ProductToOrderDto dto)
     {
@@ -56,17 +56,15 @@ public class ProductController : ControllerBase
         return product is null ? NotFound() : Ok(product);
     }
 
+    // ✅ Edycja produktu (bez wymagania OrderId)
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Product updatedProduct)
+    public async Task<IActionResult> Update(int id, [FromBody] ProductCreateDto dto)
     {
-        if (id != updatedProduct.Id)
-            return BadRequest();
-
         var existing = await _repo.GetByIdAsync(id);
         if (existing is null) return NotFound();
 
-        existing.Name = updatedProduct.Name;
-        existing.Price = updatedProduct.Price;
+        existing.Name = dto.Name;
+        existing.Price = dto.Price;
         await _repo.UpdateAsync(existing);
 
         return NoContent();
