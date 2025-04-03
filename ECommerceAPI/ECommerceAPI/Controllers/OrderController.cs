@@ -3,6 +3,7 @@ using ECommerce.Domain.Entities;
 using ECommerceAPI.DTOs;
 using ECommerceAPI.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceAPI.Controllers;
 
@@ -26,14 +27,25 @@ public class OrdersController : ControllerBase
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
-        => Ok(await _repo.GetAllAsync());
+    {
+        var orders = await _context.Orders
+            .Include(o => o.OrderProducts)
+            .ThenInclude(op => op.Product)
+            .ToListAsync();
+
+        return Ok(orders);
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         if (id <= 0) return BadRequest("Invalid ID.");
 
-        var order = await _repo.GetByIdAsync(id);
+        var order = await _context.Orders
+            .Include(o => o.OrderProducts)
+            .ThenInclude(op => op.Product)
+            .FirstOrDefaultAsync(o => o.Id == id);
+
         return order is null ? NotFound() : Ok(order);
     }
 
@@ -70,11 +82,9 @@ public class OrdersController : ControllerBase
         var order = await _repo.GetByIdAsync(dto.OrderId);
         if (order == null) return NotFound("Order not found.");
 
-        // Odlicz dostępny stock
         product.Stock -= dto.Quantity;
         await _productRepo.UpdateAsync(product);
 
-        // Tworzymy powiązanie
         var orderProduct = new OrderProduct
         {
             OrderId = dto.OrderId,
