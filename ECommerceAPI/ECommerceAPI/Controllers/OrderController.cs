@@ -33,7 +33,20 @@ public class OrdersController : ControllerBase
             .ThenInclude(op => op.Product)
             .ToListAsync();
 
-        return Ok(orders);
+        var result = orders.Select(o => new OrderDto
+        {
+            Id = o.Id,
+            CreatedAt = o.CreatedAt,
+            Products = o.OrderProducts.Select(op => new OrderProductDto
+            {
+                ProductId = op.ProductId,
+                ProductName = op.Product?.Name ?? "",
+                Price = op.Product?.Price ?? 0,
+                Quantity = op.Quantity
+            }).ToList()
+        });
+
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
@@ -46,7 +59,22 @@ public class OrdersController : ControllerBase
             .ThenInclude(op => op.Product)
             .FirstOrDefaultAsync(o => o.Id == id);
 
-        return order is null ? NotFound() : Ok(order);
+        if (order == null) return NotFound();
+
+        var result = new OrderDto
+        {
+            Id = order.Id,
+            CreatedAt = order.CreatedAt,
+            Products = order.OrderProducts.Select(op => new OrderProductDto
+            {
+                ProductId = op.ProductId,
+                ProductName = op.Product?.Name ?? "",
+                Price = op.Product?.Price ?? 0,
+                Quantity = op.Quantity
+            }).ToList()
+        };
+
+        return Ok(result);
     }
 
     [HttpPost]
